@@ -1,0 +1,68 @@
+
+{% set tags = h.get_facet_items_dict('tags', limit=3) %}
+{% set placeholder = _('Search data') %}
+{% block search %}
+<div class="module module-search module-narrow module-shallow box">
+    <div class = "page-header-container">
+    
+                <h1 id = "imageHeader">Dataphyte</h1>
+                <h4 id = "imageTagLine">Open Data For Nigeria <span id = "bluehighlight" style = "color:#277cca">!</span></h4>
+        
+            
+            <form class="module-content search-form" method="get" action="/dataset">
+                    
+                    <div class="search-input form-group search-giant">
+                        <input name = "q" type = "text" placeholder="Search Datasets" />  
+                    </div>
+            </form>
+    </div>
+    
+</div>
+<div class = "container">
+        <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                  <h2 class="title">We Empower citizens with data to take action</h2>
+                  <h3 class="description">We house public data and provide narratives for citizens, journalists,  analyst and storytellers to make informed decisions and demand accountability.</h3>
+                </div>
+        </div>
+        <div class="separator separator-primary"></div>
+</div>
+<div class = "section2">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="image-container" style="background-image: url('/datafour.jpg')"></div>
+            </div>
+            <div class="col-md-6  feature-text">
+                <p class="description align-middle">Access downloadable data curated from government and non government sources in ready to
+                    use formats for your storytelling, research and analysis purposes.</p>
+                <a id = "getstarted" class="btn btn-primary align-middle" href="/dataset">Get Started</a>
+            </div>
+        </div>
+        
+</div>
+
+{% endblock %}
+
+<div class="contianer" style="padding-left: 10%; padding-right: 10%">
+        <h2 class="title">Featured Dataset</h2>
+    {% set groups = h.get_featured_groups(count=6) %}
+    <div class="row">
+        {% for group in groups %}
+        {% snippet 'snippets/group_item.html', group=group, truncate=50, truncate_title=35 %}
+        {% endfor %}
+    </div>
+
+</div>
+
+<div class = "container" style = "margin-top: 3em">
+        <div class="separator separator-primary"></div>
+        <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                  <h2 class="title">Data Request</h2>
+                  <h3 class="description">Can't find your data here? Request for data here</h3>
+                  <div class="image-container center-block" style="background-image: url('/datareq.jpeg')"></div>
+                  <a  class="btn btn-primary btn-lg"  style = "margin-top: 3em; margin-bottom: 2em" href="https://docs.google.com/forms/d/e/1FAIpQLSfePu4RT_Z4kGYC_Dwd6fN0IUPH9LUDi-9wvXNmsmIZ9a2Eqg/viewform">Request Here</a>
+                </div>
+        </div>
+</div>
+

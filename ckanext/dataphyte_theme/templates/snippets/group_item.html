@@ -1,0 +1,21 @@
+
+        <div class="col-md-4" style = "padding: 1.5em 2em 1.5em 2em;">
+                <div class="groupimage-contianer" style = "background-image:url({{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }})">
+                    <div class = "background-container">
+                            <div class='group-details'>
+                                    <h2 class='group-name'>{{ group.title or group.name }}</h2>
+                                    {% if group.description %}
+                                        <p class='group-description'>{{ group.description}}</p>
+                                    {% endif %}
+                                    {% if group.package_count %}
+                                    <strong
+                                        class="package-count">{{ ungettext('{num} Dataset', '{num} Datasets', group.package_count).format(num=group.package_count) }}</strong>
+                                    {% elif group.package_count == 0 %}
+                                    <span class="package-count">{{ _('0 Datasets') }}</span>
+                                    {% endif %}
+                                    <a class='btn btn-primary group-link' href="{{ h.url_for(controller='group', action='read', id=group.name) }}">Browse Data</a>
+                            </div>
+                    </div>
+                </div>
+        </div>
+  
